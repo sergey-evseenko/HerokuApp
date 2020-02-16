@@ -23,12 +23,10 @@ public class AddRemoveElements {
 
         WebElement element2 = browser.findElement(By.xpath("//*[@onclick='deleteElement()']"));
         element2.click();
-
-        //зобаем список и добавляем туда список web элементов
+        
         ArrayList<WebElement> deleteButtons = new ArrayList<WebElement>();
         deleteButtons.addAll(0, browser.findElements(By.xpath("//*[@onclick='deleteElement()']")));
-
-        //проходим итератором по списку и считаем кол-вол элементов
+       
         int n = 0;
         for (WebElement item : deleteButtons) {
             n++;
