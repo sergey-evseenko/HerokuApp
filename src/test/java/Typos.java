@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 
 public class Typos {
+
     @Test
     public void checkTypos() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -25,4 +26,5 @@ public class Typos {
                 "Sometimes you'll see a typo, other times you won't.", "Ошибка в написании!");
         webDriver.quit();
     }
+
 }
