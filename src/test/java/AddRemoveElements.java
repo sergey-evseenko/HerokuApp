@@ -4,36 +4,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
-
 public class AddRemoveElements {
+
     @Test
     public void addTwoElements() {
+
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         WebDriver browser = new ChromeDriver();
         browser.get("http://the-internet.herokuapp.com/add_remove_elements/");
         browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        WebElement element1 = browser.findElement(By.xpath("//*[@onclick='addElement()']"));
-        element1.click();
-        element1.click();
+        WebElement addButton = browser.findElement(By.xpath("//*[@onclick='addElement()']"));
+        addButton.click();
+        addButton.click();
 
-        WebElement element2 = browser.findElement(By.xpath("//*[@onclick='deleteElement()']"));
-        element2.click();
-        
-        ArrayList<WebElement> deleteButtons = new ArrayList<WebElement>();
-        deleteButtons.addAll(0, browser.findElements(By.xpath("//*[@onclick='deleteElement()']")));
-       
-        int n = 0;
-        for (WebElement item : deleteButtons) {
-            n++;
-        }
-        assertEquals(n, 1, "Кол-во кнопок не равняется единице!");
+        List<WebElement> deleteButtons = browser.findElements(By.xpath("//*[@onclick='deleteElement()']"));
+        deleteButtons.get(1).click();
+        List<WebElement> deleteButtons1 = browser.findElements(By.xpath("//*[@onclick='deleteElement()']"));
+        assertEquals(deleteButtons1.size(), 1, "Кол-во кнопок не равняется единице!");
         browser.quit();
-
     }
 
 }
