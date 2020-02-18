@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 
 public class Inputs {
+
     @Test
     public void inputsByArrow() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -24,4 +25,5 @@ public class Inputs {
         assertEquals(value, "1", "Неверное значение!");
         webDriver.quit();
     }
+
 }
